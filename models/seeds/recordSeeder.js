@@ -13,5 +13,9 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongodb connected!')
 
+  spends.forEach(spend => {
+    Record.create(spend)
+  })
 
+  console.log('done.')
 })
