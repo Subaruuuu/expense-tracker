@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "name": "烤肉吃到飽",
+      "date": "2019/07/01",
+      "category": "food",
+      "amount": 799
+    },
+    {
+      "name": "吃爭鮮",
+      "date": "2019/05/22",
+      "category": "food",
+      "amount": 430
+    },
+    {
+      "name": "加油",
+      "date": "2019/12/13",
+      "category": "transportation",
+      "amount": 110
+    },
+    {
+      "name": "搭計程車",
+      "date": "2019/04/02",
+      "category": "transportation",
+      "amount": 280
+    },
+    {
+      "name": "繳保險",
+      "date": "2019/10/21",
+      "category": "others",
+      "amount": 3000
+    },
+    {
+      "name": "上健身房",
+      "date": "2019/08/10",
+      "category": "others",
+      "amount": 1800
+    },
+    {
+      "name": "買床單",
+      "date": "2019/07/09",
+      "category": "home",
+      "amount": 800
+    },
+    {
+      "name": "買床墊",
+      "date": "2019/12/13",
+      "category": "home",
+      "amount": 4500
+    }
+  ]
+}

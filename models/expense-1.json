@@ -1,0 +1,52 @@
+{
+  "results": [
+    {
+      "name": "吃飯",
+      "date": "2019/10/11",
+      "category": "food",
+      "amount": 90
+    },
+    {
+      "name": "吃火鍋",
+      "date": "2019/09/22",
+      "category": "food",
+      "amount": 150
+    },
+    {
+      "name": "坐捷運",
+      "date": "2019/10/12",
+      "category": "transportation",
+      "amount": 35
+    },
+    {
+      "name": "搭高鐵",
+      "date": "2019/10/22",
+      "category": "transportation",
+      "amount": 1450
+    },
+    {
+      "name": "買吉他",
+      "date": "2019/11/05",
+      "category": "hobbies",
+      "amount": 2500
+    },
+    {
+      "name": "看鬼滅電影",
+      "date": "2019/11/24",
+      "category": "hobbies",
+      "amount": 299
+    },
+    {
+      "name": "買拖把",
+      "date": "2019/09/15",
+      "category": "home",
+      "amount": 500
+    },
+    {
+      "name": "買蟑螂藥",
+      "date": "2019/08/05",
+      "category": "home",
+      "amount": 399
+    }
+  ]
+}
