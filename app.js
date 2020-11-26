@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const Record = require('./models/Record')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const routes = require('./routes/index')
 
 mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
@@ -32,96 +33,10 @@ app.engine('hbs', helper.engine)
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+
 app.use(methodOverride('_method'))
 
-// index
-app.get('/', (req, res) => {
-  let totalAmount = 0
-
-  Record.find()
-    .lean()
-    .then(record => {
-      record.forEach(item => {
-        totalAmount += item.amount
-      })
-      res.render('index', { record: record, totalAmount: totalAmount })
-    })
-    .catch(error => console.log(error))
-})
-
-app.get('/filter', (req, res) => {
-  // console.log(req.query)
-  const filter = req.query.options
-  let totalAmount = 0
-
-  if (filter === 'all') {
-    Record.find()
-      .lean()
-      .then(record => {
-        record.forEach(item => {
-          totalAmount += item.amount
-        })
-        res.render('index', { record: record, totalAmount: totalAmount })
-      })
-      .catch(error => console.log(error))
-  } else {
-    Record.find({ category: filter })
-      .lean()
-      .then(record => {
-        record.forEach(item => {
-          totalAmount += item.amount
-        })
-        res.render('index', { record: record, filter: filter, totalAmount: totalAmount })
-      })
-      .catch(error => console.log(error))
-  }
-})
-
-
-// new
-app.get('/new', (req, res) => {
-  res.render('new')
-})
-
-app.post('/new', (req, res) => {
-  // console.log(req.body)
-  return Record.create(req.body)
-    .then()
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-
-})
-
-// edit
-app.get('/:record_id/edit', (req, res) => {
-  const id = req.params.record_id
-  Record.findById(id)
-    .lean()
-    .then(record => res.render('edit', { record: record }))
-    .catch(error => console.log(error))
-
-})
-
-app.put('/:record_id', (req, res) => {
-  const id = req.params.record_id
-
-  Record.findById(id)
-    .then(record => {
-      record = Object.assign(record, req.body)
-      return record.save()
-    })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-app.delete('/:record_id', (req, res) => {
-  const id = req.params.record_id
-
-  Record.findById(id)
-    .then(record => record.remove())
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
+app.use(routes)
 
 app.listen(port, (req, res) => {
   console.log(`this server is listenin on http://localhost:${port}`)

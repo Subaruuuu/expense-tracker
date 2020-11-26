@@ -34,8 +34,8 @@
             </div>
             <div class="d-flex align-items-center">
               <h3 style="display: inline;" class="mt-2 mr-2">{{this.amount}}</h3>
-              <a href="/{{this._id}}/edit" class="btn btn-primary mr-3" method="get">修改</a>
-              <form action="/{{this._id}}?_method=DELETE" method="post" style="display: inline">
+              <a href="/record/{{this._id}}/edit" class="btn btn-primary mr-3" method="get">修改</a>
+              <form action="/record/{{this._id}}?_method=DELETE" method="post" style="display: inline">
                 <button class="btn btn-danger" type="submit">刪除</button>
               </form>
             </div>
@@ -45,7 +45,7 @@
       </ul>
     </div>
 
-    <form action="/new" class="mt-3" method="get">
+    <form action="/record/new" class="mt-3" method="get">
       <button class="btn btn-info btn-lg">新增支出</button>
     </form>
 
