@@ -92,6 +92,28 @@ app.post('/new', (req, res) => {
 
 })
 
+// edit
+app.get('/:record_id/edit', (req, res) => {
+  const id = req.params.record_id
+  Record.findById(id)
+    .lean()
+    .then(record => res.render('edit', { record: record }))
+    .catch(error => console.log(error))
+
+})
+
+app.post('/:record_id/edit', (req, res) => {
+  const id = req.params.record_id
+
+  Record.findById(id)
+    .then(record => {
+      record = Object.assign(record, req.body)
+      return record.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 app.listen(port, (req, res) => {
   console.log(`this server is listenin on http://localhost:${port}`)
 })
