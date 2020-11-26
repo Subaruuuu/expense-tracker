@@ -2,15 +2,15 @@
   <div class="column col mx-auto mt-3">
 
     {{!-- select name 一定要填，不然無法傳值到後面 --}}
-    <form name="form" action="/sort" method="get">
+    <form name="form" action="/filter" method="get">
       <label for="">類別：</label>
       <select name="options" onchange="if(this.value != 0) { this.form.submit(); }" class="form-control-lg col-xs-2">
         <option value="all">全部</option>
-        <option value="fas fa-home" {{#if (compare sort 'fas fa-home')}} selected {{/if}}>家居物業</option>
-        <option value="fas fa-shuttle-van" {{#if (compare sort 'fas fa-shuttle-van')}} selected {{/if}}>交通出行</option>
-        <option value="fas fa-grin-beam" {{#if (compare sort 'fas fa-grin-beam')}} selected {{/if}}>休閒娛樂</option>
-        <option value="fas fa-utensils" {{#if (compare sort 'fas fa-utensils')}} selected {{/if}}>餐飲食品</option>
-        <option value="fas fa-pen" {{#if (compare sort 'fas fa-pen')}} selected {{/if}}>其他</option>
+        <option value="fas fa-home" {{#if (compare filter 'fas fa-home')}} selected {{/if}}>家居物業</option>
+        <option value="fas fa-shuttle-van" {{#if (compare filter 'fas fa-shuttle-van')}} selected {{/if}}>交通出行</option>
+        <option value="fas fa-grin-beam" {{#if (compare filter 'fas fa-grin-beam')}} selected {{/if}}>休閒娛樂</option>
+        <option value="fas fa-utensils" {{#if (compare filter 'fas fa-utensils')}} selected {{/if}}>餐飲食品</option>
+        <option value="fas fa-pen" {{#if (compare filter 'fas fa-pen')}} selected {{/if}}>其他</option>
       </select>
     </form>
 

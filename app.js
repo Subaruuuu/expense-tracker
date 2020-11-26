@@ -45,12 +45,12 @@ app.get('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.get('/sort', (req, res) => {
+app.get('/filter', (req, res) => {
   // console.log(req.query)
-  const sort = req.query.options
+  const filter = req.query.options
   let totalAmount = 0
 
-  if (sort === 'all') {
+  if (filter === 'all') {
     Record.find()
       .lean()
       .then(record => {
@@ -61,13 +61,13 @@ app.get('/sort', (req, res) => {
       })
       .catch(error => console.log(error))
   } else {
-    Record.find({ category: sort })
+    Record.find({ category: filter })
       .lean()
       .then(record => {
         record.forEach(item => {
           totalAmount += item.amount
         })
-        res.render('index', { record: record, sort: sort, totalAmount: totalAmount })
+        res.render('index', { record: record, filter: filter, totalAmount: totalAmount })
       })
       .catch(error => console.log(error))
   }
