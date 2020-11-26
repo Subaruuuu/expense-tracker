@@ -19,8 +19,8 @@
       <h2 class="text-danger">{{totalAmount}}</h2>
     </div>
 
-    <div class="container" style="max-height: 450px; overflow: scroll;">
-      <ul class="list-group list-group-flush">
+    <div class="container" style="height: 400px; overflow: auto;">
+      <ul class="list-group">
         {{#each record}}
         <li class="list-group-item">
           <div class="row">
@@ -35,7 +35,7 @@
             <div class="d-flex align-items-center">
               <h3 style="display: inline;" class="mt-2 mr-2">{{this.amount}}</h3>
               <a href="/{{this._id}}/edit" class="btn btn-primary mr-3" method="get">修改</a>
-              <form action="#" method="post" style="display: inline">
+              <form action="/{{this._id}}/delete" method="post" style="display: inline">
                 <button class="btn btn-danger" type="submit">刪除</button>
               </form>
             </div>

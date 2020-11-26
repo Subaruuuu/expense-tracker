@@ -84,7 +84,6 @@ app.get('/new', (req, res) => {
 
 app.post('/new', (req, res) => {
   // console.log(req.body)
-
   return Record.create(req.body)
     .then()
     .then(() => res.redirect('/'))
@@ -110,6 +109,15 @@ app.post('/:record_id/edit', (req, res) => {
       record = Object.assign(record, req.body)
       return record.save()
     })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.post('/:record_id/delete', (req, res) => {
+  const id = req.params.record_id
+
+  Record.findById(id)
+    .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
