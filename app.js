@@ -4,6 +4,7 @@ const port = 3000
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const Record = require('./models/Record')
+const bodyParser = require('body-parser')
 
 mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
@@ -28,6 +29,8 @@ const helper = exphbs.create({
 // engine 引入 helper
 app.engine('hbs', helper.engine)
 app.set('view engine', 'hbs')
+
+app.use(bodyParser.urlencoded({ extended: true }))
 
 
 // index
@@ -71,14 +74,22 @@ app.get('/filter', (req, res) => {
       })
       .catch(error => console.log(error))
   }
-
 })
-
 
 
 // new
 app.get('/new', (req, res) => {
   res.render('new')
+})
+
+app.post('/new', (req, res) => {
+  // console.log(req.body)
+
+  return Record.create(req.body)
+    .then()
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+
 })
 
 app.listen(port, (req, res) => {
