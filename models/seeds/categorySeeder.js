@@ -1,11 +1,11 @@
 const db = require('../../config/mongoose')
 const Record = require('../Record')
-const expense = require('../expense-1.json')
-const spends = expense.results
+const category = require('../category.json')
+const cateogryList = category.results
 
 db.once('open', () => {
 
-  spends.forEach(spend => {
+  cateogryList.forEach(spend => {
     Record.create(spend)
   })
 

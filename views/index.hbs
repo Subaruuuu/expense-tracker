@@ -6,11 +6,30 @@
       <label for="">類別：</label>
       <select name="options" onchange="if(this.value != 0) { this.form.submit(); }" class="form-control-lg col-xs-2">
         <option value="all">全部</option>
-        <option value="fas fa-home" {{#if (compare filter 'fas fa-home')}} selected {{/if}}>家居物業</option>
-        <option value="fas fa-shuttle-van" {{#if (compare filter 'fas fa-shuttle-van')}} selected {{/if}}>交通出行</option>
-        <option value="fas fa-grin-beam" {{#if (compare filter 'fas fa-grin-beam')}} selected {{/if}}>休閒娛樂</option>
-        <option value="fas fa-utensils" {{#if (compare filter 'fas fa-utensils')}} selected {{/if}}>餐飲食品</option>
-        <option value="fas fa-pen" {{#if (compare filter 'fas fa-pen')}} selected {{/if}}>其他</option>
+        <option value="fas fa-home" {{#if (compare filter 'fas fa-home' )}} selected {{/if}}>家居物業</option>
+        <option value="fas fa-shuttle-van" {{#if (compare filter 'fas fa-shuttle-van' )}} selected {{/if}}>交通出行</option>
+        <option value="fas fa-grin-beam" {{#if (compare filter 'fas fa-grin-beam' )}} selected {{/if}}>休閒娛樂</option>
+        <option value="fas fa-utensils" {{#if (compare filter 'fas fa-utensils' )}} selected {{/if}}>餐飲食品</option>
+        <option value="fas fa-pen" {{#if (compare filter 'fas fa-pen' )}} selected {{/if}}>其他</option>
+      </select>
+    </form>
+
+    <form name="form" action="/filter" method="get">
+      <label for="">月份：</label>
+      <select name="options" onchange="if(this.value != 0) { this.form.submit(); }" class="form-control-lg col-xs-2">
+        <option value="all">全部</option>
+        <option value="january">一月</option>
+        <option value="february">二月</option>
+        <option value="march">三月</option>
+        <option value="april">四月</option>
+        <option value="may">五月</option>
+        <option value="june">六月</option>
+        <option value="july">七月</option>
+        <option value="august">八月</option>
+        <option value="september">九月</option>
+        <option value="october">十月</option>
+        <option value="november">十一月</option>
+        <option value="december">十二月</option>
       </select>
     </form>
 

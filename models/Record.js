@@ -13,6 +13,10 @@ const RecordSchema = new Schema({
   category: {
     type: String,
   },
+  merchant: {
+    type: String,
+    required: true
+  },
   amount: {
     type: Number,
     required: true
