@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const routes = require('./routes/index')
+const session = require('express-session')
 require('./config/mongoose')
 
 
@@ -20,6 +21,12 @@ const helper = exphbs.create({
 // engine 引入 helper
 app.engine('hbs', helper.engine)
 app.set('view engine', 'hbs')
+
+app.use(session({
+  secret: "expenseSecret",    // 必填
+  resave: false,
+  saveUninitialized: true
+}))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
