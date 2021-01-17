@@ -5,7 +5,7 @@ const filter = require('./modules/filter')
 const record = require('./modules/record')
 
 router.use('/', home)
-router.use('/filter', filter)
+// router.use('/filter', filter)
 router.use('/record', record)
 
 module.exports = router
