@@ -23,7 +23,7 @@ app.engine('hbs', helper.engine)
 app.set('view engine', 'hbs')
 
 app.use(session({
-  secret: "expenseSecret",    // 必填
+  secret: "expenseSecret",
   resave: false,
   saveUninitialized: true
 }))
