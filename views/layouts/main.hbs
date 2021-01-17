@@ -13,7 +13,13 @@
 
 <body class="bg-light">
   <nav class="navbar navbar-light bg-info justify-content-center">
-    <a href="/" class="navbar-brand h1 text-white">家庭記帳本</a>
+    <a href="/" class="navbar-brand h1 text-white">
+      {{#if isAuthenticated}}
+      {{ user.name}}的記帳本
+      {{else}}
+      家庭記帳本
+      {{/if}}
+    </a>
   </nav>
 
   {{{body}}}
