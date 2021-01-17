@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const user = require('./user')
 const Schema = mongoose.Schema
 
 const RecordSchema = new Schema({
@@ -20,6 +21,12 @@ const RecordSchema = new Schema({
   amount: {
     type: Number,
     required: true
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    index: true,
+    require: true
   }
 })
 

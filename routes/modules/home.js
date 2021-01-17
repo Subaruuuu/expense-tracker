@@ -6,6 +6,7 @@ const Record = require('../../models/Record')
 router.get('/', (req, res) => {
   let category = req.query.category
   let month = req.query.month
+  const userId = req.user._id
 
   if (category === undefined || month === undefined) {
     category = ""
@@ -21,8 +22,8 @@ router.get('/', (req, res) => {
 
   const query = {
     $and: [
-      { category: { $regex: category, $options: 'i' } },
-      { date: { $regex: monthSearch, $options: 'i' } }
+      { category: { $regex: category, $options: 'i' }, userId },
+      { date: { $regex: monthSearch, $options: 'i' }, userId }
     ]
   }
 
