@@ -1,20 +1,31 @@
-# 老爸的私房錢
+# 老爸的私房錢 v2.0
 
 這是個專門給老爸私房錢記帳用的專案作品
 
-![](https://i.imgur.com/DrOr5kA.png)
+### Login page
+![Webpicture](./public/login.png)
+
+### home page
+![Webpicture](./public/home.png)
 
 ## 環境設定
 - npm
 - nodemon
+- node.js
 - Robo 3T
 - MongoDB
 
 ## 套件使用
 - express
 - express-handlebars
+- express-session
 - body-parser
-- mongoose
+- method-override
+- Mongoose
+- bcryptjs
+- passport, local, facebook
+- dotenv
+- connect-flash
 
 ## 功能
 - 使用者可以瀏覽全部的支出項目以及花費總金額
@@ -22,6 +33,11 @@
 - 使用者可以編輯某個項目的資料
 - 使用者可以刪除某個項目的資料
 - 使用者可以新增某個項目的資料
+
+## 2021/01/18 更新 Update
+- 新增使用者登入驗證功能
+- 新增商家紀錄欄位
+- 新增月份篩選查看花費總金額
 
 ## 安裝
 先打開終端機，輸入以下指令進行下載：
