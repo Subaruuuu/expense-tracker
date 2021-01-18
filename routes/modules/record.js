@@ -47,7 +47,7 @@ router.delete('/:record_id', (req, res) => {
   const _id = req.params.record_id
   const userId = req.user._id
 
-  ecord.findOne({ _id, userId })
+  Record.findOne({ _id, userId })
     .then(record => record.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
