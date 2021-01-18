@@ -56,6 +56,7 @@ npm run seed & npm run dev
 ```
 
 建立種子資料後，可以使用以下使用者來登入查看：
+
 使用者一號:
 - email: user1@example.com
 - password: 12345678
