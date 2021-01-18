@@ -54,6 +54,17 @@ npm install
 ```bash
 npm run seed & npm run dev
 ```
+
+建立種子資料後，可以使用以下使用者來登入查看：
+使用者一號:
+- email: user1@example.com
+- password: 12345678
+
+使用者二號:
+- email: user2@example.com
+- password: 12345678
+
+
 可以至 "http://localhost:3000" 查看專案內容
 
 ## Contributor
