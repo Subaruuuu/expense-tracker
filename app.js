@@ -1,6 +1,10 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -25,7 +29,7 @@ app.engine('hbs', helper.engine)
 app.set('view engine', 'hbs')
 
 app.use(session({
-  secret: "expenseSecret",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
