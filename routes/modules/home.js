@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
     month = ""
   }
 
-  let totalAmount = 0
   let monthSearch = `[0-9]{4}-${month}-[0-9]{2}`
 
   if (month === "") {
@@ -27,15 +26,44 @@ router.get('/', (req, res) => {
     ]
   }
 
-  Record.find(query)
-    .lean()
-    .then(record => {
-      record.forEach(item => {
-        totalAmount += item.amount
-      })
+  const spendSum = Record.aggregate([
+    {
+      $match: query
+    },
+    { $group: { _id: null, totalAmount: { $sum: "$amount" } } }
+  ])
+
+  const record = Record.aggregate([
+    {
+      $match: query
+    }])
+
+  Promise.all([spendSum, record])
+    .then(([spendSum, record]) => {
+      let totalAmount = spendSum.length ? spendSum[0].totalAmount : 0
       res.render('index', { record, totalAmount, category, month })
     })
     .catch(error => console.log(error))
+
+  // Record.find(query)
+  //   .lean()
+  //   .then(record => {
+  //     record.forEach(item => {
+  //       totalAmount += item.amount
+  //     })
+  //     res.render('index', { record, totalAmount, category, month })
+  //   })
+  //   .catch(error => console.log(error))
+
+  // Record.aggregate([
+  //   {
+  //     $match: query
+  //   }])
+  //   .then(record => {
+  //     // console.log(totalAmount)
+  //     res.render('index', { record, totalAmount, category, month })
+  //   })
+  //   .catch(error => console.log(error))
 
 })
 
