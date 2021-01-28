@@ -19,7 +19,7 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   const errors = []
 
@@ -41,7 +41,7 @@ router.post('/register', (req, res) => {
     })
   }
 
-  User.findOne({ email }).then(user => {
+  await User.findOne({ email }).then(user => {
     if (user) {
       errors.push({ message: '這個 email 已經註冊過了！' })
       return res.render('register', {

@@ -4,8 +4,7 @@ const Record = require('../../models/Record')
 
 
 router.get('/', (req, res) => {
-  let category = req.query.category
-  let month = req.query.month
+  let { category, month } = req.query
   const userId = req.user._id
 
   if (category === undefined || month === undefined) {
@@ -20,50 +19,29 @@ router.get('/', (req, res) => {
   }
 
   const query = {
-    $and: [
-      { category: { $regex: category, $options: 'i' }, userId },
-      { date: { $regex: monthSearch, $options: 'i' }, userId }
-    ]
+    category: { $regex: category, $options: 'i' },
+    date: { $regex: monthSearch, $options: 'i' },
+    userId
   }
 
-  const spendSum = Record.aggregate([
+  const spendSumPromise = Record.aggregate([
     {
       $match: query
     },
     { $group: { _id: null, totalAmount: { $sum: "$amount" } } }
   ])
 
-  const record = Record.aggregate([
+  const recordPromise = Record.aggregate([
     {
       $match: query
     }])
 
-  Promise.all([spendSum, record])
+  Promise.all([spendSumPromise, recordPromise])
     .then(([spendSum, record]) => {
       let totalAmount = spendSum.length ? spendSum[0].totalAmount : 0
       res.render('index', { record, totalAmount, category, month })
     })
     .catch(error => console.log(error))
-
-  // Record.find(query)
-  //   .lean()
-  //   .then(record => {
-  //     record.forEach(item => {
-  //       totalAmount += item.amount
-  //     })
-  //     res.render('index', { record, totalAmount, category, month })
-  //   })
-  //   .catch(error => console.log(error))
-
-  // Record.aggregate([
-  //   {
-  //     $match: query
-  //   }])
-  //   .then(record => {
-  //     // console.log(totalAmount)
-  //     res.render('index', { record, totalAmount, category, month })
-  //   })
-  //   .catch(error => console.log(error))
 
 })
 
