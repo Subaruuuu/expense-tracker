@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Record = require('../../models/Record')
 
+
 router.get('/', (req, res) => {
   const category = req.query.options
   let totalAmount = 0
