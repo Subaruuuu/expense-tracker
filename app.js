@@ -28,6 +28,8 @@ const helper = exphbs.create({
 app.engine('hbs', helper.engine)
 app.set('view engine', 'hbs')
 
+app.use(express.static('public'))
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
